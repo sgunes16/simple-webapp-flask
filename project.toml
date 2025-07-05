@@ -2,23 +2,27 @@
 schema-version = "0.2"
 
 [project]
-id = "simple-express-app"
-name = "Simple Express App"
+id = "simple-flask-app"
+name = "Simple Flask App"
 version = "1.0.0"
 
 [[build.env]]
-name = "NODE_ENV"
+name = "FLASK_ENV"
 value = "production"
 
 [[build.env]]
 name = "PORT"
 value = "8001"
 
+[[build.env]]
+name = "PYTHONPATH"
+value = "."
+
 [[build.buildpacks]]
-uri = "heroku/nodejs"
+uri = "heroku/python"
 
 [metadata]
-description = "Simple Express.js application"
+description = "Simple Flask Python application"
 
 [metadata.dokku]
 port = 8001
