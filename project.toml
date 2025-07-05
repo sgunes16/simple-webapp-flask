@@ -1,0 +1,27 @@
+[_]
+schema-version = "0.2"
+
+[project]
+id = "simple-express-app"
+name = "Simple Express App"
+version = "1.0.0"
+
+[[build.env]]
+name = "NODE_ENV"
+value = "production"
+
+[[build.env]]
+name = "PORT"
+value = "5000"
+
+[[build.buildpacks]]
+uri = "heroku/nodejs"
+
+[metadata]
+description = "Simple Express.js application"
+
+[metadata.dokku]
+port = 5000
+
+[metadata.deploy]
+port = 5000
