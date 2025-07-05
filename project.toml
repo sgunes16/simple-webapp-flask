@@ -10,8 +10,6 @@ value = "."
 [[build.buildpacks]]
 uri = "heroku/python"
 
-->
-
 [[build.env]]
 name = "PORT"
 value = "8001"
