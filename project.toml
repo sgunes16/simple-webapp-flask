@@ -1,14 +1,16 @@
-[_]
-schema-version = "0.2"
-
-[project]
-id = "simple-flask-app"
-name = "Simple Flask App"
-version = "1.0.0"
+[[build.env]]
+name = "PORT"
+value = "5000"
 
 [[build.env]]
-name = "FLASK_ENV"
-value = "production"
+name = "PYTHONPATH"
+value = "."
+
+# Cloud Native Buildpack port configuration
+[[build.buildpacks]]
+uri = "heroku/python"
+
+->
 
 [[build.env]]
 name = "PORT"
@@ -18,14 +20,14 @@ value = "8001"
 name = "PYTHONPATH"
 value = "."
 
+[[build.env]]
+name = "FLASK_APP"
+value = "/opt/app.py"
+
+# Cloud Native Buildpack port configuration
 [[build.buildpacks]]
 uri = "heroku/python"
 
-[metadata]
-description = "Simple Flask Python application"
-
-[metadata.dokku]
-port = 8001
-
-[metadata.deploy]
-port = 8001
+# Define processes
+[build.processes]
+web = "FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8001"
